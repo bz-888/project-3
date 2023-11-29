@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import './LoginPage.css';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import userService from '../../utils/userService';
 
@@ -12,13 +12,14 @@ import {
   Grid,
   Header,
   Segment,
+  Message,
 } from "semantic-ui-react";
 
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 
 
-function LoginPage({handleSignUpOrLogin}) {
+function LoginPage({ handleSignUpOrLogin }) {
 
   // define the state variables and the set terminology
   const [state, setState] = useState({
@@ -26,8 +27,10 @@ function LoginPage({handleSignUpOrLogin}) {
     password: ''
   })
 
+  // define state and setState for error
   const [error, setError] = useState('')
 
+  //define useNavigate function that was imported above as navigate
   const navigate = useNavigate();
 
 
@@ -38,11 +41,16 @@ function LoginPage({handleSignUpOrLogin}) {
 
 
     try {
+      // login using the information stored in state
       await userService.login(state);
+
+      // call handleSignUporLogin function from App.jsx
+      // get user token
       handleSignUpOrLogin();
+
+      // navigate to homepage
       navigate("/");
     } catch (err) {
-      // ????? This is supposed to come from utils. I don't see where it comes from. Where does the .message come from? What does it refer to?
       console.log(err.message);
       // Set the state of error message in preparation for it to be displayed via the line of code below.
       setError("Try logging in again.");
@@ -89,6 +97,9 @@ function LoginPage({handleSignUpOrLogin}) {
               Signup
             </Button>
           </Segment>
+          <Message>
+            New to Grocery Tracker? <Link to="/signup">Sign up here!</Link>
+          </Message>
           {error ? <ErrorMessage error={error} /> : null}
         </Form>
       </Grid.Column>
