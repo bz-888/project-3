@@ -5,12 +5,10 @@ import "./App.css";
 
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import AddPage from "./pages/AddPage/AddPage";
 import FeedPage from "./pages/FeedPage.jsx/FeedPage";
 import ListPage from "./pages/ListPage/ListPage";
 
 import userService from "./utils/userService";
-import { List } from "semantic-ui-react";
 
 function App() {
 
@@ -28,11 +26,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<FeedPage />} />
+      <Route path="/" element={<FeedPage loggedUser={user} />} />
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/signup" element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
-      <Route path="/add" element={<AddPage />} />
-      <Route path="/list" element={<ListPage />} />
+      <Route path="/groceries/:username" element={<ListPage loggedUser={user}/>} />
     </Routes>
   );
 }

@@ -1,28 +1,37 @@
+import { useState, useEffect } from "react";
+
+import { useLocation } from 'react-router-dom';
+
+import tokenService from "../../utils/tokenService";
+
 import PageHeader from "../../components/PageHeader/PageHeader";
-import GroceryItem from "../../components/GroceryItem/GroceryItem";
+import GroceryList from "../../components/GroceryList/GroceryList";
 import AddGroceryForm from "../../components/AddGroceryForm/AddGroceryForm";
 import {
-    Grid,
-    Header,
+    Grid
 } from "semantic-ui-react";
-import { useEffect, useState } from "react";
-import tokenService from "../../utils/tokenService";
 
 function ListPage() {
 
     const [groceries, setGroceries] = useState([]);
 
+    const location = useLocation();
+    console.log(location.state.groceries, "<-- a user's grocery list")
+
     useEffect(() => {
         getGroceries();
     }, []);
 
+
+    // C(R)UD -> r or read in CRUD operations
     async function getGroceries() {
         try {
             const response = await fetch("/api/groceries", {
                 method: "GET",
                 headers: {
-                    Authorization: "Bearer " + tokenService.getToken(),
                     // Send the token, so the server knows who is making the request
+                    Authorization: "Bearer " + tokenService.getToken(),
+                    // Define content type
                     'Content-Type': 'application/json'
                 },
             });
@@ -37,6 +46,7 @@ function ListPage() {
         }
     }
 
+    // (C)RUD -> c or create in CRUD operations
     // send grocery to the server
     async function addGrocery(grocery) {
         try {
@@ -51,7 +61,7 @@ function ListPage() {
                     // designate the content type as json
                     'Content-Type': 'application/json'
                 },
-                
+
                 // stringify grocery and set it to body
                 body: JSON.stringify(grocery),
             });
@@ -77,7 +87,8 @@ function ListPage() {
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column>
-                    <GroceryItem />
+                    <GroceryList
+                    />
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>

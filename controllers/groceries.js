@@ -16,7 +16,7 @@ async function create(req, res) {
     try {
       // adding the information to the db
       const groceryDoc = await Grocery.create({
-        userId: req.user, // req.user is from the jwt, token the client sent over (config/auth) is where req.user is set from the token
+        user: req.user, // req.user is from the jwt, token the client sent over (config/auth) is where req.user is set from the token
         itemName: req.body.itemName,
         quantity: req.body.quantity,
         expirationDate: req.body.expirationDate,
@@ -26,7 +26,7 @@ async function create(req, res) {
       await groceryDoc.populate('user')
       // respond to the client!
       // status 201, means resource created!
-      res.status(201).json({grocery: groceryDoc}) 
+      res.status(201).json({grocery: groceryDoc})
 
     } catch(err){
       console.log(err, " <- error in create post")
@@ -36,9 +36,6 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    // this populates the user when you find the posts
-    // so you'll have access to the users information
-    // when you fetch teh posts
     const groceries = await Grocery.find({}).populate("user").exec();
     res.status(200).json({ groceries });
   } catch (err) {

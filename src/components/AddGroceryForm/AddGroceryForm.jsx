@@ -30,7 +30,7 @@ function AddGroceryForm({addGrocery}) {
     }
 
     return (
-        <Grid textAlign="center" style={{ height: "100vh" }}>
+        <Grid textAlign="center">
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as="h2" color="green" textAlign="center">
                     Add an Item to Your Fridge
