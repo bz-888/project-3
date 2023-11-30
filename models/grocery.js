@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const itemSchema = new mongoose.Schema(
+const grocerySchema = new mongoose.Schema(
     {
         itemName: { type: String, required: true },
         quantity: { type: String, required: true },
         expirationDate: { type: Date, required: true},
-        userId: { type: mongoose.Schema.Types.ObjectId, ref: "User"}
+        user: { type: mongoose.Schema.Types.ObjectId, ref: "User"}
     },
 
     {
@@ -13,4 +13,4 @@ const itemSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model("Item", itemSchema);
+module.exports = mongoose.model("Grocery", grocerySchema);

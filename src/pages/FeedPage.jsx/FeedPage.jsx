@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import PageHeader from "../../components/PageHeader/PageHeader";
 import GroceryFeed from "../../components/GrocerySummary/GrocerySummary";
 
@@ -13,22 +15,24 @@ function FeedPage() {
     })
 
     async function addSummary() {
-        
+
     }
-    
-    return(
-        <Grid centered>
-            <Grid.Row>
-                <Grid.Column>
-                    <PageHeader />
-                </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-                <Grid.Column>
-                    <GroceryFeed />
-                </Grid.Column>
-            </Grid.Row>
-        </Grid>
+
+    return (
+        <>
+            <PageHeader />
+            <Grid>
+                <Grid.Row>
+                    <Grid.Column>
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column>
+                        <GroceryFeed />
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+        </>
     )
 }
 

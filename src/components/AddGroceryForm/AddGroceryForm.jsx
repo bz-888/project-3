@@ -8,7 +8,7 @@ import {
     Segment,
 } from "semantic-ui-react";
 
-function AddGroceryForm() {
+function AddGroceryForm({addGrocery}) {
 
 
     const [grocery, setGrocery] = useState({
