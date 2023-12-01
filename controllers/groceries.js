@@ -2,7 +2,8 @@ const Grocery = require("../models/grocery");
 
 module.exports = {
   create,
-  index
+  index,
+  deleteGrocery
 };
 
 
@@ -41,4 +42,15 @@ async function index(req, res) {
   } catch (err) {
     res.json({error: err})
   }
+}
+
+async function deleteGrocery(req, res){
+    try {
+        
+        const grocery = await Grocery.findByIdAndDelete(req.params.id);
+        
+        res.json({data: 'grocery removed'})
+    } catch(err){
+        res.status(400).json({err})
+    }
 }

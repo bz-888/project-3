@@ -4,5 +4,6 @@ const groceriesCtrl = require('../../controllers/groceries');
 
 router.post('/', groceriesCtrl.create);
 router.get('/', groceriesCtrl.index)
+router.delete("/:id", groceriesCtrl.deleteGrocery);
 
 module.exports = router;

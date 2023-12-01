@@ -49,7 +49,7 @@ function GrocerySummaryFeed({
         return filterGroceries(person.user.username)
     })
 
-    // take each person's grocery list, calling each on list
+    // take each person's grocery list, calling each one list
     // pass list as groceries to GrocerySummary
     // return GrocerySummary
     const grocerySummary = allGroceryLists.map((list, index) => {
