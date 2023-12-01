@@ -57,7 +57,7 @@ function GrocerySummary({groceries}) {
                     </Table.Row>
                     <Table.Row>
                         <Table.Cell>
-                            {groceries[0].user.username}
+                            {groceries[0].owner}
                         </Table.Cell>
 
                         <Table.Cell>
@@ -73,7 +73,7 @@ function GrocerySummary({groceries}) {
                         </Table.Cell>
 
                         <Table.Cell>
-                            <Link to={`/groceries/${groceries[0].user.username}`} state={{groceries}}>
+                            <Link to={`/groceries/${groceries[0].owner}`} state={{groceries}}>
                                 See Grocery List
                             </Link>
                         </Table.Cell>

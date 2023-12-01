@@ -11,7 +11,7 @@ import {
     Grid
 } from "semantic-ui-react";
 
-function ListPage() {
+function ListPage({ loggedUser, handleLogout }) {
 
     const location = useLocation();
     const [selectedList, setSelectedList] = useState(location.state.groceries);
@@ -68,11 +68,12 @@ function ListPage() {
 
             // HTTP cycle is complete and we received a response from the server (aka data)
             // parse the json
+            
             const data = await response.json();
             console.log(data, "<--- data from addGrocery");
             // add new grocery item to the groceries array, including the existing items
             setSelectedList([data.grocery, ...selectedList])
-
+            console.log(location, "<-- location in AddGrocery in ListPage")
         } catch (err) {
             console.log(err);
         }
@@ -105,7 +106,7 @@ function ListPage() {
         <Grid>
             <Grid.Row>
                 <Grid.Column>
-                    <PageHeader />
+                    <PageHeader loggedUser={loggedUser} handleLogout={handleLogout} />
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>

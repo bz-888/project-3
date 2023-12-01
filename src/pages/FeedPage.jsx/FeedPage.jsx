@@ -4,8 +4,9 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import GrocerySummaryFeed from "../../components/GrocerySummaryFeed/GrocerySummaryFeed";
 
 import tokenService from "../../utils/tokenService";
+import { Grid } from "semantic-ui-react";
 
-function FeedPage({ loggedUser }) {
+function FeedPage({ loggedUser, handleLogout }) {
 
     const [groceries, setGroceries] = useState([]);
 
@@ -70,15 +71,23 @@ function FeedPage({ loggedUser }) {
     }
 
     return (
-        <>
-            <PageHeader />
-            <GrocerySummaryFeed 
-            groceries={groceries}
-            addGrocery={addGrocery}
-            loggedUser={loggedUser}
-            itemsPerRow={1}
-            />
-        </>
+        <Grid>
+            <Grid.Row>
+                <Grid.Column>
+                    <PageHeader loggedUser={loggedUser} handleLogout={handleLogout} />
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column>
+                    <GrocerySummaryFeed
+                        groceries={groceries}
+                        addGrocery={addGrocery}
+                        loggedUser={loggedUser}
+                        itemsPerRow={1}
+                    />
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
     )
 }
 

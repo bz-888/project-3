@@ -12,6 +12,7 @@ function AddGroceryForm({addGrocery}) {
 
 
     const [grocery, setGrocery] = useState({
+        owner: "",
         itemName: "",
         quantity: "",
         expirationDate: "",
@@ -37,6 +38,13 @@ function AddGroceryForm({addGrocery}) {
                 </Header>
                 <Form autoComplete="off" onSubmit={handleSubmit}>
                     <Segment stacked>
+                        <Form.Input 
+                            name="owner"
+                            placeholder="owner"
+                            value={grocery.owner}
+                            onChange={handleChange}
+                            required
+                        />
                         <Form.Input
                             name="itemName"
                             placeholder="item name"

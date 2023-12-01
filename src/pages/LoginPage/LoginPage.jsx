@@ -94,7 +94,7 @@ function LoginPage({ handleSignUpOrLogin }) {
               required
             />
             <Button type="submit" className="btn">
-              Signup
+              Login
             </Button>
           </Segment>
           <Message>

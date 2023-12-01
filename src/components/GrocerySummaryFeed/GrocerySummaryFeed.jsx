@@ -11,9 +11,9 @@ function GrocerySummaryFeed({
     // conditions being where groceries's user property's username value
     // matches the username provided as an argument
     // see below for the argument provided
-    function filterGroceries(username) {
+    function filterGroceries(person) {
         return groceries.filter(grocery => {
-            return grocery.user.username === username
+            return grocery.owner === person
         })
     }
 
@@ -29,7 +29,7 @@ function GrocerySummaryFeed({
             // if it doesn't match, move on
             self.findIndex(
                 // Modify this function as you desire. You may want to calculate uniqueness depending only on specific fields, not all
-                (obj) => obj.user?.username === value.user?.username
+                (obj) => obj.owner === value.owner
             ) === index
         );
     }
@@ -44,9 +44,10 @@ function GrocerySummaryFeed({
     // the array's content is defined by filterGroceries
     // filterGroceries, defined above, returns an array of objects
     // the array of objects is limited to when the person is matching the username of the grocery
+    
 
-    const allGroceryLists = uniquePeople.map(person => {
-        return filterGroceries(person.user.username)
+    const allGroceryLists = uniquePeople.map(uniquePersonGroceryItem => {
+        return filterGroceries(uniquePersonGroceryItem.owner)
     })
 
     // take each person's grocery list, calling each one list

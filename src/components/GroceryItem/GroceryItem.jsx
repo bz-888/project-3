@@ -2,7 +2,7 @@ import { Table, Button, Icon } from "semantic-ui-react";
 
 function GroceryItem({ grocery, removeGrocery }) {
 
-    
+    console.log(grocery, "<-- grocery in GroceryItem");
 
     return (
         <Table.Row>
