@@ -5,6 +5,9 @@
 
 ![Screenshot 2](https://i.imgur.com/dq066Ll.png)
 
+## Purpose
+This app was built in order to limit food waste in our household.
+
 ## Technologies Used
 * HTML
 * CSS
@@ -14,7 +17,6 @@
 * MongoDB
 * Mongoose
 * React
-
 
 ## Getting Started
 * App: [Link to App](localhost.8000)
